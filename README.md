@@ -4,3 +4,7 @@
 * Pure stack
     * Implement with array
     * Implement with linked list
+
+### Queue
+* Pure queue
+    * Implement with array
