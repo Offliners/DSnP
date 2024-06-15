@@ -48,7 +48,7 @@ void display(stack *s)
     if(s->top != -1)
     {
         int *data = (int*)malloc((s->top + 1) * sizeof(int));
-        for(int i = 0; i < s->top; ++i)
+        for(int i = 0; i <= s->top; ++i)
             data[i] = 0;
         
         int index = s->top;
@@ -60,7 +60,7 @@ void display(stack *s)
             --index;
         }
 
-        for(int i = 0; i < s->top + 1; ++i)
+        for(int i = 0; i <= s->top; ++i)
             printf("%d ", data[i]);
         
         free(data);
