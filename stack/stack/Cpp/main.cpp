@@ -3,6 +3,7 @@
 #include <map>
 #include <list>
 #include <stack>
+#include <algorithm>
 
 using namespace std;
 
@@ -27,6 +28,7 @@ list<int> toList(stack<int> stack_copy)
         return_list.push_back(stack_copy.top());
         stack_copy.pop();
     }
+    reverse(return_list.begin(), return_list.end());
     return return_list;
 }
 
@@ -65,6 +67,7 @@ int main(void)
             case DISPLAY:
                 for(auto item : toList(s))
                     cout << item << " ";
+                cout << endl;
                 break;
             case CHECK:
                 cout << s.size() << endl;
