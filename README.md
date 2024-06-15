@@ -1,6 +1,5 @@
 # Data Structure and Programming
 
-## Outline
 ### Stack
 * Pure stack
     * Implement with array
