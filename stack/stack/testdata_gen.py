@@ -38,8 +38,11 @@ class my_stack:
             self.result.append('Empty')
     
     def display(self) -> None:
-        result_str = [str(e) for e in self.s]
-        self.result.append(" ".join(result_str))
+        if self.s:
+            result_str = [str(e) for e in self.s]
+            self.result.append(" ".join(result_str))
+        else:
+            self.result.append("")
     
     def check(self) -> None:
         self.result.append(str(len(self.s)))

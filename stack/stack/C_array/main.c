@@ -11,7 +11,7 @@
 #define FULL    6
 #define UNKNOWN -1
 
-typedef struct {
+typedef struct SELECTIONS{
     char *key;
     int val;
 } selections;
@@ -82,6 +82,8 @@ int main(void)
                 break;
         }
     }
+
+    free_stack(s);
 
     return 0;
 }

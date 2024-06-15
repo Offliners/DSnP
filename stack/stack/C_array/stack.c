@@ -35,8 +35,9 @@ void pop(stack *s)
 
 void display(stack *s)
 {
-    for(int i = 0; i <= s->top; ++i)
-        printf("%d ", s->data[i]);
+    if(s->top != -1)
+        for(int i = 0; i <= s->top; ++i)
+            printf("%d ", s->data[i]);
     printf("\n");
 }
 
@@ -59,4 +60,10 @@ void full(stack *s)
         printf("True\n");
     else
         printf("False\n");
+}
+
+void free_stack(stack *s)
+{
+    free(s->data);
+    free(s);
 }

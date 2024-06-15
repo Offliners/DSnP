@@ -63,8 +63,9 @@ int main(void)
                     cout << "Empty" << endl;
                 break;
             case DISPLAY:
-                for(auto item : toList(s))
-                    cout << item << " ";
+                if(!s.empty())
+                    for(auto item : toList(s))
+                        cout << item << " ";
                 cout << endl;
                 break;
             case CHECK:

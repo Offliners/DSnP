@@ -1,7 +1,12 @@
-typedef struct {
+typedef struct NODE{
+    int val;
+    struct NODE *next;
+} node;
+
+typedef struct STACK{
     int top;
     int maxsize;
-    int *data;
+    struct NODE* stack_top;
 } stack;
 
 void initialize(stack*, int);
@@ -11,3 +16,4 @@ void display(stack*);
 void check(stack*);
 void empty(stack*);
 void full(stack*);
+void free_stack(stack*);
