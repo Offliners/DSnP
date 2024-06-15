@@ -12,6 +12,7 @@ typedef struct STACK{
 void initialize(stack*, int);
 void push(stack*, int);
 void pop(stack*);
+void top(stack*);
 void display(stack*);
 void check(stack*);
 void empty(stack*);

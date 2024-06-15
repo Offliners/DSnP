@@ -7,13 +7,14 @@
 
 using namespace std;
 
-enum selection {PUSH, POP, DISPLAY, CHECK, EMPTY, FULL};
+enum selection {PUSH, POP, TOP, DISPLAY, CHECK, EMPTY, FULL};
 map<string, selection> selections;
 
 void register_selections()
 {
     selections["PUSH"]     = PUSH;
     selections["POP"]      = POP;
+    selections["GET_TOP"]  = TOP;
     selections["DISPLAY"]  = DISPLAY;
     selections["CHECK"]    = CHECK;
     selections["IS_EMPTY"] = EMPTY;
@@ -61,6 +62,11 @@ int main(void)
                     s.pop();
                 else
                     cout << "Empty" << endl;
+                break;
+            case TOP:
+                if(!s.empty())
+                    cout << s.top();
+                cout << endl;
                 break;
             case DISPLAY:
                 if(!s.empty())

@@ -5,13 +5,14 @@
 
 #define PUSH    1
 #define POP     2
-#define DISPLAY 3
-#define CHECK   4
-#define EMPTY   5
-#define FULL    6
+#define TOP     3
+#define DISPLAY 4
+#define CHECK   5
+#define EMPTY   6
+#define FULL    7
 #define UNKNOWN -1
 
-typedef struct {
+typedef struct SELECTIONS{
     char *key;
     int val;
 } selections;
@@ -19,6 +20,7 @@ typedef struct {
 static selections register_selections[] = {
     {"PUSH"    , PUSH},
     {"POP"     , POP},
+    {"GET_TOP" , TOP},
     {"DISPLAY" , DISPLAY},
     {"CHECK"   , CHECK},
     {"IS_EMPTY", EMPTY},
@@ -29,7 +31,7 @@ static selections register_selections[] = {
 
 int keyfromstring(char *key)
 {
-    for(int i = 0; i < 6; ++i)
+    for(int i = 0; i < NUM_KEY; ++i)
     {
         selections select = register_selections[i];
         if(!strcmp(select.key, key))
@@ -64,6 +66,9 @@ int main(void)
                 break;
             case POP:
                 pop(s);
+                break;
+            case TOP:
+                top(s);
                 break;
             case DISPLAY:
                 display(s);

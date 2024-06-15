@@ -11,6 +11,7 @@ class bcolors:
 cmd_list = [
     'PUSH',
     'POP',
+    'GET_TOP',
     'DISPLAY',
     'CHECK',
     'IS_EMPTY',
@@ -36,6 +37,12 @@ class my_stack:
             self.s.pop()
         else:
             self.result.append('Empty')
+
+    def top(self) -> None:
+        if self.s:
+            self.result.append(self.s[-1])
+        else:
+            self.result.append("")
     
     def display(self) -> None:
         if self.s:
@@ -68,7 +75,15 @@ def gen() -> Tuple[List[str], List[str]]:
     testcase_output = []
 
     num_cmd = random.randint(config['cmd_lower'], config['cmd_upper'])
-    cmd_weights = [config['prob_push'], config['prob_pop'], config['prob_display'], config['prob_check'], config['prob_is_empty'], config['prob_is_full']]
+    cmd_weights = [
+        config['prob_push'],
+        config['prob_pop'],
+        config['prob_top'],
+        config['prob_display'],
+        config['prob_check'],
+        config['prob_is_empty'],
+        config['prob_is_full']
+    ]
     testcase_input.append(str(num_cmd))
     
     stack_maxsize = random.randint(config['size_lower'], config['size_upper'])
@@ -83,12 +98,14 @@ def gen() -> Tuple[List[str], List[str]]:
         elif cmd == cmd_list[1]:
             s.pop()
         elif cmd == cmd_list[2]:
-            s.display()
+            s.top()
         elif cmd == cmd_list[3]:
-            s.check()
+            s.display()
         elif cmd == cmd_list[4]:
-            s.empty()
+            s.check()
         elif cmd == cmd_list[5]:
+            s.empty()
+        elif cmd == cmd_list[6]:
             s.full()
         else:
             print(f'{bcolors.FAIL}Unknown command{bcolors.ENDC}')

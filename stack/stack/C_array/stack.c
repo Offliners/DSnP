@@ -33,6 +33,13 @@ void pop(stack *s)
         printf("Empty\n");
 }
 
+void top(stack *s)
+{
+    if(s->top != -1)
+        printf("%d", s->data[s->top]);
+    printf("\n");
+}
+
 void display(stack *s)
 {
     if(s->top != -1)

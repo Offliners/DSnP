@@ -10,8 +10,9 @@ config = {
     'cmd_upper' : 10000,
 
     # Probability of each stack command
-    'prob_push'     : 0.3,
-    'prob_pop'      : 0.3,
+    'prob_push'     : 0.25,
+    'prob_pop'      : 0.25,
+    'prob_top'      : 0.1,
     'prob_display'  : 0.1,
     'prob_check'    : 0.1,
     'prob_is_empty' : 0.1,
