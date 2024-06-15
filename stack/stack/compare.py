@@ -13,10 +13,13 @@ class bcolors:
 
 def compare():
     num_testcase = config['num_testcase']
-    exec_files = ['stack_cpp.bin', 'stack_c.bin']
+    exec_files = ['stack_cpp', 'stack_c']
     testcase_input = './input'
     output_folder = './output'
     golden_output_folder = './golden_output'
+
+    p = subprocess.Popen(f'make', shell=True)
+    p.wait()
 
     for exec_file in exec_files:
         runtimes = []
@@ -59,7 +62,10 @@ def compare():
         print('{:<9s}:   {:>3s} KB'.format('Memory', str(round(sum(memories) / num_testcase))))
         print('\n')
 
-        # shutil.rmtree(output_folder)
+        shutil.rmtree(output_folder)
+
+    p = subprocess.Popen(f'make clean', shell=True)
+    p.wait()
 
 
 if __name__ == '__main__':

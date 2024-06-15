@@ -1,6 +1,10 @@
+CPPOUTPUT = stack_cpp
+COUTPUT = stack_c
+
 all:                                                                                                                                                                                                        
-	g++ ./Cpp/main.cpp -o stack_cpp.bin
-	gcc ./C/main.c ./C/stack.c -o stack_c.bin
+	g++ ./Cpp/main.cpp -o $(CPPOUTPUT)
+	gcc ./C/main.c ./C/stack.c -o $(COUTPUT)
 
 clean:
-	@rm -f *.out
+	@rm $(CPPOUTPUT)
+	@rm $(COUTPUT)
