@@ -45,7 +45,7 @@ void pop(queue *q)
 void front(queue *q)
 {
     if(q->front != -1)
-        printf("%d", q->queue_front->val);
+        printf("%d", q->queue_front->next->val);
     printf("\n");
 }
 
@@ -57,13 +57,13 @@ void display(queue *q)
         for(int i = 0; i <= q->front; ++i)
             data[i] = 0;
         
-        int index = 0;
+        int index = q->front;
         node *cur = q->queue_front->next;
         while(cur)
         {
             data[index] = cur->val;
             cur = cur->next;
-            ++index;
+            --index;
         }
 
         for(int i = 0; i <= q->front; ++i)
