@@ -40,9 +40,7 @@ int main(void)
     int stack_maxsize;
     cin >> stack_maxsize;
 
-    // Initialization
     stack<int> s;
-
     string cmd;
     register_selections();
     for(int i = 0; i < num_cmd; ++i)

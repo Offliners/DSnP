@@ -13,7 +13,7 @@ class bcolors:
 
 def compare():
     num_testcase = config['num_testcase']
-    exec_files = ['stack_cpp.out']
+    exec_files = ['stack_cpp.out', 'stack_c.out']
     testcase_input = './input'
     output_folder = './output'
     golden_output_folder = './golden_output'
@@ -59,7 +59,7 @@ def compare():
         print('{:<9s}:   {:>3s} KB'.format('Memory', str(round(sum(memories) / num_testcase))))
         print('\n')
 
-        shutil.rmtree(output_folder)
+        # shutil.rmtree(output_folder)
 
 
 if __name__ == '__main__':
