@@ -2,6 +2,6 @@
 
 ## Usage
 ```shell
-$ make
+$ cd stack
 $ python3 compare.py
 ```
