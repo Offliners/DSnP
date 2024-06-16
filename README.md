@@ -11,7 +11,7 @@ $ cd ./{data_struct_dir}/{data_struct_series_dir}
 $ python3 compare.py
 ```
 ## Outline
-### Linled List series
+### Linked List series
 * Linked List
     * Implement with STL in C++
     * Implement in C
