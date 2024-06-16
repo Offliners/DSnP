@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "queue.h"
+#include "linkedlist.h"
 
 #define PUSH    1
 #define POP     2
-#define FRONT   3
+#define TOP     3
 #define DISPLAY 4
 #define CHECK   5
 #define EMPTY   6
@@ -18,13 +18,13 @@ typedef struct SELECTIONS{
 } selections;
 
 static selections register_selections[] = {
-    {"PUSH"      , PUSH},
-    {"POP"       , POP},
-    {"GET_FRONT" , FRONT},
-    {"DISPLAY"   , DISPLAY},
-    {"CHECK"     , CHECK},
-    {"IS_EMPTY"  , EMPTY},
-    {"IS_FULL"   , FULL}
+    {"PUSH"    , PUSH},
+    {"POP"     , POP},
+    {"GET_TOP" , TOP},
+    {"DISPLAY" , DISPLAY},
+    {"CHECK"   , CHECK},
+    {"IS_EMPTY", EMPTY},
+    {"IS_FULL" , FULL}
 };
 
 #define NUM_KEY (sizeof(register_selections)/sizeof(selections))
@@ -46,11 +46,11 @@ int main(void)
     int num_cmd;
     scanf("%d", &num_cmd);
 
-    int queue_maxsize;
-    scanf("%d", &queue_maxsize);
+    int stack_maxsize;
+    scanf("%d", &stack_maxsize);
 
-    queue *q = (queue*)malloc(1 * sizeof(queue));
-    initialize(q, queue_maxsize);
+    stack *s = (stack*)malloc(1 * sizeof(stack));
+    initialize(s, stack_maxsize);
 
     char cmd[10];
     char temp;
@@ -62,25 +62,25 @@ int main(void)
         {
             case PUSH:
                 scanf("%d", &n);
-                push(q, n);
+                push(s, n);
                 break;
             case POP:
-                pop(q);
+                pop(s);
                 break;
-            case FRONT:
-                front(q);
+            case TOP:
+                top(s);
                 break;
             case DISPLAY:
-                display(q);
+                display(s);
                 break;
             case CHECK:
-                check(q);
+                check(s);
                 break;
             case EMPTY:
-                empty(q);
+                empty(s);
                 break;
             case FULL:
-                full(q);
+                full(s);
                 break;
             default:
                 printf("Unknown command\n");
@@ -88,7 +88,7 @@ int main(void)
         }
     }
 
-    free_queue(q);
+    free_stack(s);
 
     return 0;
 }

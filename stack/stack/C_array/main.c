@@ -1,7 +1,7 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include"stack.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "stack.h"
 
 #define PUSH    1
 #define POP     2
