@@ -22,46 +22,46 @@ random.seed(config['seed'])
 
 class my_queue:
     def __init__(self, maxsize: int, result: List[str]) -> None:
-        self.s = []
+        self.q = []
         self.maxsize = maxsize
         self.result = result
 
     def push(self, n: int) -> None:
-        if len(self.s) < self.maxsize:
-            self.s.insert(0, n)
+        if len(self.q) < self.maxsize:
+            self.q.insert(0, n)
         else:
             self.result.append('Full')
     
     def pop(self) -> None:
-        if self.s:
-            self.s.pop()
+        if self.q:
+            self.q.pop()
         else:
             self.result.append('Empty')
     
     def front(self) -> None:
-        if self.s:
-            self.result.append(self.s[-1])
+        if self.q:
+            self.result.append(self.q[-1])
         else:
             self.result.append('')
     
     def display(self) -> None:
-        if self.s:
-            result_str = [str(e) for e in self.s]
+        if self.q:
+            result_str = [str(e) for e in self.q]
             self.result.append(" ".join(result_str))
         else:
             self.result.append('')
     
     def check(self) -> None:
-        self.result.append(str(len(self.s)))
+        self.result.append(str(len(self.q)))
     
     def empty(self) -> None:
-        if self.s:
+        if self.q:
             self.result.append('False')
         else:
             self.result.append('True')
     
     def full(self) -> None:
-        if len(self.s) >= self.maxsize:
+        if len(self.q) >= self.maxsize:
             self.result.append('True')
         else:
             self.result.append('False')
@@ -88,31 +88,31 @@ def gen() -> Tuple[List[str], List[str]]:
     
     queue_maxsize = random.randint(config['size_lower'], config['size_upper'])
     testcase_input.append(str(queue_maxsize))
-    s = my_queue(queue_maxsize, testcase_output)
+    q = my_queue(queue_maxsize, testcase_output)
     for _ in range(num_cmd):
         cmd = random.choices(cmd_list, weights=cmd_weights)[0]
         if cmd == cmd_list[0]:
             n = random.randint(config['value_lower'], config['value_upper'])
             cmd = cmd + f' {n}'
-            s.push(n)
+            q.push(n)
         elif cmd == cmd_list[1]:
-            s.pop()
+            q.pop()
         elif cmd == cmd_list[2]:
-            s.front()
+            q.front()
         elif cmd == cmd_list[3]:
-            s.display()
+            q.display()
         elif cmd == cmd_list[4]:
-            s.check()
+            q.check()
         elif cmd == cmd_list[5]:
-            s.empty()
+            q.empty()
         elif cmd == cmd_list[6]:
-            s.full()
+            q.full()
         else:
             print(f'{bcolors.FAIL}Unknown command{bcolors.ENDC}')
 
         testcase_input.append(cmd)
 
-    return testcase_input, s.get_result()
+    return testcase_input, q.get_result()
         
 
 def main(input_path: str, output_path: str) -> None:

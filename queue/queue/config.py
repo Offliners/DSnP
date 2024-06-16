@@ -22,7 +22,7 @@ config = {
     'size_lower' : 0,
     'size_upper' : 10000,
 
-    # Boundary of queue in stack
+    # Boundary of value in queue
     'value_lower' : 0,
     'value_upper' : 10000
 }
