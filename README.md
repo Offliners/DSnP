@@ -14,6 +14,7 @@ $ python3 compare.py
 ### Linled List series
 * Linked List
     * Implement with STL in C++
+    * Implement in C
 
 ### Stack series
 * stack

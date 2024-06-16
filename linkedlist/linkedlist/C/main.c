@@ -3,13 +3,14 @@
 #include <string.h>
 #include "linkedlist.h"
 
-#define PUSH    1
-#define POP     2
-#define TOP     3
-#define DISPLAY 4
+#define APPEND  1
+#define INSERT  2
+#define DISPLAY 3
+#define REMOVE  4
 #define CHECK   5
 #define EMPTY   6
-#define FULL    7
+#define MIDDLE  7
+#define REVERSE 8
 #define UNKNOWN -1
 
 typedef struct SELECTIONS{
@@ -18,13 +19,14 @@ typedef struct SELECTIONS{
 } selections;
 
 static selections register_selections[] = {
-    {"PUSH"    , PUSH},
-    {"POP"     , POP},
-    {"GET_TOP" , TOP},
+    {"APPEND"  , APPEND},
+    {"INSERT"  , INSERT},
     {"DISPLAY" , DISPLAY},
+    {"REMOVE"  , REMOVE},
     {"CHECK"   , CHECK},
-    {"IS_EMPTY", EMPTY},
-    {"IS_FULL" , FULL}
+    {"EMPTY"   , EMPTY},
+    {"MIDDLE"  , MIDDLE},
+    {"REVERSE" , REVERSE}
 };
 
 #define NUM_KEY (sizeof(register_selections)/sizeof(selections))
@@ -46,41 +48,43 @@ int main(void)
     int num_cmd;
     scanf("%d", &num_cmd);
 
-    int stack_maxsize;
-    scanf("%d", &stack_maxsize);
-
-    stack *s = (stack*)malloc(1 * sizeof(stack));
-    initialize(s, stack_maxsize);
+    linkedlist *ll = (linkedlist*)malloc(sizeof(linkedlist));
+    initialize(ll);
 
     char cmd[10];
     char temp;
-    int n;
+    int index, n;
     for(int i = 0; i < num_cmd; ++i)
     {
         scanf("%s", cmd);
         switch(keyfromstring(cmd))
         {
-            case PUSH:
+            case APPEND:
                 scanf("%d", &n);
-                push(s, n);
+                append(ll, n);
                 break;
-            case POP:
-                pop(s);
-                break;
-            case TOP:
-                top(s);
+            case INSERT:
+                scanf("%d %d", &index, &n);
+                insert(ll, index, n);
                 break;
             case DISPLAY:
-                display(s);
+                display(ll);
+                break;
+            case REMOVE:
+                scanf("%d", &index);
+                remove_node(ll, index);
                 break;
             case CHECK:
-                check(s);
+                printf("%d\n", check(ll));
                 break;
             case EMPTY:
-                empty(s);
+                empty(ll);
                 break;
-            case FULL:
-                full(s);
+            case MIDDLE:
+                find_middle(ll);
+                break;
+            case REVERSE:
+                reverse(ll);
                 break;
             default:
                 printf("Unknown command\n");
@@ -88,7 +92,7 @@ int main(void)
         }
     }
 
-    free_stack(s);
+    free_list(ll);
 
     return 0;
 }
