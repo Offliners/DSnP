@@ -29,3 +29,7 @@ $ python3 compare.py
     * Implement with linked list in C
 
 ### Tree
+
+### Hash
+
+### Sort
