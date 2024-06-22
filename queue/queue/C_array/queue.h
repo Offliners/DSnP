@@ -1,3 +1,6 @@
+#ifndef _QUEUE_H_
+#define _QUEUE_H_
+
 typedef struct QUEUE{
     int front;
     int maxsize;
@@ -13,3 +16,5 @@ void check(queue*);
 void empty(queue*);
 void full(queue*);
 void free_queue(queue*);
+
+#endif

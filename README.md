@@ -13,7 +13,7 @@ $ python3 compare.py
 ## Outline
 ### Linked List series
 * Linked List
-    * Implement with STL in C++
+    * Implement in C++
     * Implement in C
 
 ### Stack series
@@ -33,4 +33,9 @@ $ python3 compare.py
 ### Hash
 
 ### Sort
+* Sort
+    * Implement with algorithm in C++
+    * Implement with qsort in C
 * Bubble sort
+    * Implement in C++
+    * Implement in C

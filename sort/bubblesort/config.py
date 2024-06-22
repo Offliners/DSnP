@@ -6,7 +6,7 @@ config = {
     'num_testcase': 1000,
 
     # Probability of flag
-    'prob_flag'     : 0.5,
+    'prob_flag' : 0.5,
 
     # Boundary of data size
     'size_lower' : 0,

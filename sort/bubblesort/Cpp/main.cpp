@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include "bubblesort.h"
 
 using namespace std;
 
@@ -20,13 +20,9 @@ int main(void)
         data.push_back(temp);
     }
 
-    if(!flag)
-        sort(data.begin(), data.end());
-    else
-        sort(data.begin(), data.end(), greater<>());
-
-    for(auto d : data)
-        cout << d << endl;
+    BubbleSort s(data, flag);
+    s.sort();
+    s.display();
 
     return 0;
 }

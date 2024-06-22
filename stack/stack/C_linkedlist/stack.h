@@ -1,3 +1,6 @@
+#ifndef _STACK_H_
+#define _STACK_H_
+
 typedef struct NODE{
     int val;
     struct NODE *next;
@@ -18,3 +21,5 @@ void check(stack*);
 void empty(stack*);
 void full(stack*);
 void free_stack(stack*);
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef _LINKEDLIST_H_
+#define _LINKEDLIST_H_
+
 typedef struct NODE {
     int val;
     struct NODE *next;
@@ -18,3 +21,5 @@ void empty(linkedlist*);
 void find_middle(linkedlist*);
 void reverse(linkedlist*);
 void free_list(linkedlist*);
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef _LINKEDLIST_H_
+#define _LINKEDLIST_H_
+
 class Node {
     friend class LinkedList;
     public:
@@ -27,3 +30,5 @@ class LinkedList {
     private:
         Node *head = new Node(0);
 };
+
+#endif

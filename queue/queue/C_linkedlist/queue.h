@@ -1,3 +1,6 @@
+#ifndef _QUEUE_H_
+#define _QUEUE_H_
+
 typedef struct NODE{
     int val;
     struct NODE *next;
@@ -18,3 +21,5 @@ void check(queue*);
 void empty(queue*);
 void full(queue*);
 void free_queue(queue*);
+
+#endif

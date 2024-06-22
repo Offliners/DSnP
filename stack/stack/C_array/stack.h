@@ -1,3 +1,6 @@
+#ifndef _STACK_H_
+#define _STACK_H_
+
 typedef struct  STACK{
     int top;
     int maxsize;
@@ -13,3 +16,5 @@ void check(stack*);
 void empty(stack*);
 void full(stack*);
 void free_stack(stack*);
+
+#endif
