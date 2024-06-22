@@ -17,17 +17,31 @@ void BubbleSort::swap(int &a, int &b)
 
 void BubbleSort::sort()
 {
-    for(int i = 0; i < data.size(); ++i)
+    for(int i = 0; i < data.size() - 1; ++i)
     {
-        for(int j = i + 1; j < data.size(); ++j)
+        bool swaped = false;
+        for(int j = 0; j < data.size() - 1 - i; ++j)
         {
             if(flag)
-                if(data[i] > data[j])
-                    swap(data[i], data[j]);
+            {
+                if(data[j + 1] > data[j])
+                {
+                    swap(data[j + 1], data[j]);
+                    swaped = true;
+                }
+            }
             else
-                if(data[i] < data[j])
-                    swap(data[i], data[j]);
+            {
+                if(data[j + 1] < data[j])
+                {
+                    swap(data[j + 1], data[j]);
+                    swaped = true;
+                }
+            }
         }
+
+        if(!swaped)
+            break;
     }
 }
 

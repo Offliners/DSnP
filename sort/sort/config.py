@@ -13,6 +13,6 @@ config = {
     'size_upper' : 10000,
 
     # Boundary of value
-    'value_lower' : 0,
+    'value_lower' : -10000,
     'value_upper' : 10000
 }
