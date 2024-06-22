@@ -33,3 +33,4 @@ $ python3 compare.py
 ### Hash
 
 ### Sort
+* Bubble sort
