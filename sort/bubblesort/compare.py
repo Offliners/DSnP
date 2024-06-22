@@ -62,7 +62,7 @@ def compare():
         print('{:<9s}:   {:>3s} KB'.format('Memory', str(round(sum(memories) / num_testcase))))
         print('\n')
 
-        shutil.rmtree(output_folder)
+        # shutil.rmtree(output_folder)
 
     p = subprocess.Popen(f'make clean', shell=True)
     p.wait()

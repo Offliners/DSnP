@@ -19,10 +19,10 @@ def gen() -> Tuple[List[str], List[str]]:
     testcase_input.append(data_size)
 
     flag = random.random() < config['prob_flag']
-    if flag < 0.5:
-        testcase_input.append(0)
-    else:
+    if flag:
         testcase_input.append(1)
+    else:
+        testcase_input.append(0)
     
     data = []
     for _ in range(data_size):
