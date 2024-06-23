@@ -49,7 +49,7 @@ int main(void)
     int stack_maxsize;
     scanf("%d", &stack_maxsize);
 
-    stack *s = (stack*)malloc(1 * sizeof(stack));
+    stack *s = (stack*)malloc(sizeof(stack));
     initialize(s, stack_maxsize);
 
     char cmd[10];
