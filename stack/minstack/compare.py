@@ -13,7 +13,7 @@ class bcolors:
 
 def compare():
     num_testcase = config['num_testcase']
-    exec_files = ['minstack_cpp']
+    exec_files = ['minstack_cpp', 'minstack_c_array']
     testcase_input = './input'
     output_folder = './output'
     golden_output_folder = './golden_output'
@@ -62,7 +62,7 @@ def compare():
         print('{:<9s}:   {:>3s} KB'.format('Memory', str(round(sum(memories) / num_testcase))))
         print('\n')
 
-        # shutil.rmtree(output_folder)
+        shutil.rmtree(output_folder)
 
     p = subprocess.Popen(f'make clean', shell=True)
     p.wait()

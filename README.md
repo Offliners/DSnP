@@ -26,6 +26,7 @@ $ python3 compare.py
     * Implement with linked list in C
 * Min Stack
     * Implement with STL in C++
+    * Implement with array in C
 
 ### Queue series
 * Queue
