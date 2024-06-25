@@ -1,5 +1,7 @@
-#ifndef _BINARY_TREE_H
-#define _BINARY_TREE_H
+#ifndef _BINARYTREE_H
+#define _BINARYTREE_H
+
+#include <vector>
 
 class Node {
     friend class BinaryTree;
@@ -19,8 +21,12 @@ class Node {
 class BinaryTree {
     public:
         BinaryTree() {};
-        BinaryTree(int);
-
+        BinaryTree(std::vector<int>);
+        void preorder_traversal();
+        void inorder_traversal();
+        void postorder_traversal();
+        void levelorder_traversal();
+        void free_tree();
     private:
         Node *root = new Node(0);
 };
