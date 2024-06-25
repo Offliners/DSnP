@@ -16,11 +16,11 @@ class Node {
 class LinkedList {
     public:
         LinkedList() {};
-        LinkedList(int n);
-        void append(int n);
-        void insert(int index, int n);
+        LinkedList(int);
+        void append(int);
+        void insert(int, int);
         void display();
-        void remove(int index);
+        void remove(int);
         int check();
         bool empty();
         int find_middle();
