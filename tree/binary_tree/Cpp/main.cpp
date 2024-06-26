@@ -66,6 +66,6 @@ int main(void)
         }
     }
 
-    bt.free_tree();
+    bt.free_tree(bt.root);
     return 0;
 }

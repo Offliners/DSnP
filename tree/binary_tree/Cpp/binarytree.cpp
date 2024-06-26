@@ -71,15 +71,20 @@ void BinaryTree::levelorder_traversal()
         q.pop();                          
         std::cout << cur->val << " ";
 
-        if (!cur->left)
+        if(cur->left)
             q.push(cur->left);
 
-        if (!cur->right)
+        if(cur->right)
             q.push(cur->right);
     }
 }
 
-void BinaryTree::free_tree()
+void BinaryTree::free_tree(Node *node)
 {
-
+    if(!node)
+        return;
+    
+    free_tree(node->left);
+    free_tree(node->right);
+    free(node);
 }

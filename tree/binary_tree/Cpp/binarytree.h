@@ -17,7 +17,6 @@ class Node {
         Node *right = nullptr;
 };
 
-
 class BinaryTree {
     public:
         BinaryTree() {};
@@ -26,10 +25,8 @@ class BinaryTree {
         void inorder_traversal(Node*);
         void postorder_traversal(Node*);
         void levelorder_traversal();
-        void free_tree();
+        void free_tree(Node*);
         Node *root = new Node(0);
 };
-
-
 
 #endif
