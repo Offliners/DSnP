@@ -45,12 +45,20 @@ int main(void)
         switch(selections[cmd])
         {
             case PREORDER:
+                bt.preorder_traversal(bt.root);
+                cout << endl;
                 break;
             case INORDER:
+                bt.inorder_traversal(bt.root);
+                cout << endl;
                 break;
             case POSTORDER:
+                bt.postorder_traversal(bt.root);
+                cout << endl;
                 break;
             case LEVELORDER:
+                bt.levelorder_traversal();
+                cout << endl;
                 break;
             default:
                 cout << "Unknown command" << endl;
