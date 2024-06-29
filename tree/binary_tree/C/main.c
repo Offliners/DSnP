@@ -47,8 +47,10 @@ int main(void)
     int num_cmd;
     scanf("%d", &num_cmd);
 
-    char cmd[10];
-    char temp;
+    BinaryTree *bt = (BinaryTree*)malloc(sizeof(BinaryTree));
+    initialize_binarytree(bt, data, num_data);
+
+    char cmd[11];
     int n;
     for(int i = 0; i < num_cmd; ++i)
     {
@@ -56,12 +58,20 @@ int main(void)
         switch(keyfromstring(cmd))
         {
             case PREORDER:
+                preorder_traversal(bt->root);
+                printf("\n");
                 break;
             case INORDER:
+                inorder_traversal(bt->root);
+                printf("\n");
                 break;
             case POSTORDER:
+                postorder_traversal(bt->root);
+                printf("\n");
                 break;
             case LEVELORDER:
+                levelorder_traversal(bt->root);
+                printf("\n");
                 break;
             default:
                 printf("Unknown command\n");
@@ -69,6 +79,7 @@ int main(void)
         }
     }
 
+    free_tree(bt->root);
 
     return 0;
 }

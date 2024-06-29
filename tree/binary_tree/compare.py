@@ -13,7 +13,7 @@ class bcolors:
 
 def compare():
     num_testcase = config['num_testcase']
-    exec_files = ['binarytree_cpp']
+    exec_files = ['binarytree_cpp', 'binarytree_c']
     testcase_input = './input'
     output_folder = './output'
     golden_output_folder = './golden_output'
