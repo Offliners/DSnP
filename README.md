@@ -38,6 +38,7 @@ $ python3 compare.py
 ### Tree
 * Binary Tree
     * Implement with STL in C++
+    * Implement with queue in C
 
 ### Hash
 

@@ -13,17 +13,14 @@ void initialize_queue(Queue *q)
 void queue_push(Queue *q, TreeNode *n)
 {
     q->front += 1;
+    QueueNode *head = (QueueNode*)malloc(sizeof(QueueNode));
+    head->cur = n;
+    head->next = NULL;
+    
     if(q->front == 0)
-    {
-        q->queue_front->cur = n;
-        q->queue_front->next = NULL;
-    }
+        q->queue_front = head;
     else
     {
-        QueueNode *head = (QueueNode*)malloc(sizeof(QueueNode));
-        head->cur = n;
-        head->next = NULL;
-
         QueueNode *cur = q->queue_front;
         while(cur->next)
             cur = cur->next;
