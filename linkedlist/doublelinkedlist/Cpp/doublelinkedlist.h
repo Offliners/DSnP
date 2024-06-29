@@ -2,7 +2,7 @@
 #define _LINKEDLIST_H_
 
 class Node {
-    friend class LinkedList;
+    friend class DoubleLinkedList;
     public:
         Node(): val(0), next(nullptr), prev(nullptr) {};
         Node(int n): val(n), next(nullptr), prev(nullptr) {};
@@ -18,7 +18,11 @@ class DoubleLinkedList {
     public:
         DoubleLinkedList() {};
         void append(int);
+        void insert_head(int);
+        void insert_tail(int);
         void insert(int, int);
+        void pop();
+        Node* get_node(int);
         void display();
         void remove(int);
         int check();
@@ -30,7 +34,7 @@ class DoubleLinkedList {
     private:
         Node *head = new Node(0);
         Node *tail = new Node(0);
-        int length = 0;
+        int length = -1;
 };
 
 #endif

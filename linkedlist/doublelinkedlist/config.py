@@ -12,6 +12,7 @@ config = {
     # Probability of each double linked list command
     'prob_append'  : 0.3,
     'prob_insert'  : 0.3,
+    'prob_pop'     : 0.3,
     'prob_display' : 0.1,
     'prob_remove'  : 0.1,
     'prob_check'   : 0.1,

@@ -5,7 +5,18 @@
 
 using namespace std;
 
-enum selection {PUSH, POP, TOP, DISPLAY, CHECK, EMPTY, FULL, MIN};
+enum selection {
+    UNKNOWN,
+    PUSH, 
+    POP, 
+    TOP, 
+    DISPLAY, 
+    CHECK, 
+    EMPTY, 
+    FULL, 
+    MIN
+};
+
 map<string, selection> selections;
 
 void register_selections()

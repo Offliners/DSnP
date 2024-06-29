@@ -6,6 +6,7 @@
 using namespace std;
 
 enum selection {
+    UNKNOWN,
     PREORDER,
     INORDER,
     POSTORDER,

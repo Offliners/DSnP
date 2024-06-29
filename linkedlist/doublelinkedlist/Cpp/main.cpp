@@ -6,8 +6,10 @@
 using namespace std;
 
 enum selection {
+    UNKNOWN,
     APPEND,
     INSERT,
+    POP,
     DISPLAY,
     REMOVE,
     CHECK,
@@ -15,12 +17,14 @@ enum selection {
     MIDDLE,
     REVERSE
 };
+
 map<string, selection> selections;
 
 void register_selections()
 {
     selections["APPEND"]  = APPEND;
     selections["INSERT"]  = INSERT;
+    selections["POP"]  = POP;
     selections["DISPLAY"] = DISPLAY;
     selections["REMOVE"]  = REMOVE;
     selections["CHECK"]   = CHECK;
@@ -50,6 +54,9 @@ int main(void)
             case INSERT:
                 cin >> index >> n;
                 dll.insert(index, n);
+                break;
+            case POP:
+                dll.pop();
                 break;
             case DISPLAY:
                 dll.display();

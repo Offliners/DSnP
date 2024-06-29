@@ -18,6 +18,8 @@ $ python3 compare.py
 * Linked List
     * Implement in C++
     * Implement in C
+* Double Linked List
+    * Implement in C++
 
 ### Stack series
 * Stack

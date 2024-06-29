@@ -11,6 +11,7 @@ class bcolors:
 cmd_list = [
     'APPEND',
     'INSERT',
+    'POP',
     'DISPLAY',
     'REMOVE',
     'CHECK',
@@ -27,7 +28,7 @@ class my_linkedlist:
         self.result = result
 
     def append(self, n: int) -> None:
-        self.ll.append(n)
+        self.ll = [n] + self.ll
     
     def insert(self, index: int, n: int) -> None:
         if index < 0 or index > len(self.ll):
@@ -35,6 +36,12 @@ class my_linkedlist:
         else:
             self.ll.insert(index, n)
     
+    def pop(self) -> None:
+        if len(self.ll) == 0:
+            self.result.append('Empty')
+        else:
+            self.ll = self.ll[:-1]
+
     def display(self) -> None:
         if self.ll:
             result_str = [str(e) for e in self.ll]
@@ -82,6 +89,7 @@ def gen() -> Tuple[List[str], List[str]]:
     cmd_weights = [
         config['prob_append'],
         config['prob_insert'],
+        config['prob_pop'],
         config['prob_display'],
         config['prob_remove'],
         config['prob_check'],
@@ -104,18 +112,20 @@ def gen() -> Tuple[List[str], List[str]]:
             cmd = cmd + f' {index} {n}'
             ll.insert(index, n)
         elif cmd == cmd_list[2]:
-            ll.display()
+            ll.pop()
         elif cmd == cmd_list[3]:
+            ll.display()
+        elif cmd == cmd_list[4]:
             index = random.randint(config['cmd_lower'], config['cmd_upper'])
             cmd = cmd + f' {index}'
             ll.remove(index)
-        elif cmd == cmd_list[4]:
-            ll.check()
         elif cmd == cmd_list[5]:
-            ll.empty()    
+            ll.check()
         elif cmd == cmd_list[6]:
-            ll.middle()
+            ll.empty()    
         elif cmd == cmd_list[7]:
+            ll.middle()
+        elif cmd == cmd_list[8]:
             ll.reverse()
         else:
             print(f'{bcolors.FAIL}Unknown command{bcolors.ENDC}')

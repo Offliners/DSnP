@@ -3,56 +3,127 @@
 
 void DoubleLinkedList::append(int n)
 {
-    Node *next = new Node(n);
-    
-    if(!head->next)
-        head->next = next;
-    else
+    Node *new_node = new Node(n);
+    if(length == -1)
     {
-        Node *cur = head->next;
-        while(cur->next)
-            cur = cur->next;
-        cur->next = next;
+        head = new_node;
+        tail = new_node;
     }
+    else
+        insert_head(n);
+    
+    ++length;
+}
+
+void DoubleLinkedList::insert_head(int n)
+{
+    Node *new_node = new Node(n);
+    head->prev = new_node;
+    new_node->next = head;
+    head = new_node;
+}
+
+void DoubleLinkedList::insert_tail(int n)
+{
+    Node *new_node = new Node(n);
+    tail->next = new_node;
+    new_node->prev = tail;
+    tail = new_node;
 }
 
 void DoubleLinkedList::insert(int index, int n)
 {
-    int len = check();
-    if(index > len || index < 0)
+    if(index > length + 1 || index < 0)
     {
         std::cout << "Error" << std::endl;
         return;
     }
 
-    if(index == 0)
+    if(length == -1)
     {
-        Node *origin_next = head->next;
-        head->next = new Node(n);
-        head->next->next = origin_next;
+        Node *new_node = new Node(n);
+        head = new_node;
+        tail = new_node;
+    }
+    else if(index == 0)
+        insert_head(n);
+    else if(index == length + 1)
+        insert_tail(n);
+    else
+    {
+        Node *new_node = new Node(n);
+        Node *before_node = get_node(index - 1);
+        Node *after_node = before_node->next;
+
+        before_node->next = new_node;
+        new_node->prev = before_node;
+
+        after_node->prev = new_node;
+        new_node->next = after_node;
+    }
+    ++length;
+}
+
+void DoubleLinkedList::pop()
+{
+    if(length == -1)
+    {
+        std::cout << "Empty" << std::endl;
         return;
     }
 
-    int count = 0;
-    Node *cur = head->next;
-    while(cur)
+    if(length == 0)
     {
-        if(count == index - 1)
-        {
-            Node *origin_next = cur->next;
-            cur->next = new Node(n);
-            cur->next->next = origin_next;
-            break;
-        }
-
-        ++count;
-        cur = cur->next;
+        head = new Node(0);
+        tail = new Node(0);
     }
+    else
+    {
+        Node *pop_node = tail;
+        tail = pop_node->prev;
+        tail->next = nullptr;
+        pop_node->prev = nullptr;
+    }
+    --length;
+}
+
+Node* DoubleLinkedList::get_node(int index)
+{
+    if(index > length + 1 || index < 0)
+    {
+        std::cout << "Error" << std::endl;
+        return nullptr;
+    }
+
+    int count;
+    Node *cur = new Node(0);
+    if(index <= (length + 1) / 2)
+    {
+        count = 0;
+        cur = head;
+        while(count != index)
+        {
+            cur = cur->next;
+            ++count;
+        }
+    }
+    else
+    {
+        count = length;
+        cur = tail;
+        while(count != index)
+        {
+            cur = cur->prev;
+            --count;
+        }
+    }
+
+    return cur;
 }
 
 void DoubleLinkedList::display()
 {
-    Node *cur = head->next;
+    Node *cur = (length == -1) ? head->next : head;
     while(cur)
     {
         std::cout << cur->val << " ";
@@ -63,62 +134,60 @@ void DoubleLinkedList::display()
 
 void DoubleLinkedList::remove(int index)
 {
-    int len = check();
-    if(index >= len || index < 0)
+    if(index >= length + 1 || index < 0 || length == -1)
     {
         std::cout << "Error" << std::endl;
         return;
     }
 
-    if(index == 0)
+    if(length == 0)
     {
-        head->next = head->next->next;
-        return;
+        head = new Node(0);
+        tail = new Node(0);
     }
-
-    int count = 0;
-    Node *cur = head->next;
-    while(cur)
+    else if(index == 0)
     {
-        if(count == index - 1)
-        {
-            cur->next = cur->next->next;
-            break;
-        }
-
-        ++count;
-        cur = cur->next;
+        Node *remove_node = head;
+        head = remove_node->next;
+        head->prev = nullptr;
+        remove_node->next = nullptr;
     }
+    else if(index == length)
+    {
+        Node *remove_node = tail;
+        tail = remove_node->prev;
+        tail->next = nullptr;
+        remove_node->prev = nullptr;
+    }
+    else
+    {
+        Node *removed_node = get_node(index);
+        removed_node->prev->next = removed_node->next;
+        removed_node->next->prev = removed_node->prev;
+
+        removed_node->next = nullptr;
+        removed_node->prev = nullptr;
+    }
+    --length;
 }
 
 int DoubleLinkedList::check()
 {
-    if(!head->next)
-        return 0;
-
-    int len = 0;
-    Node *cur = head->next;
-    while(cur)
-    {
-        ++len;
-        cur = cur->next;
-    }
-    
-    return len;
+    return length + 1;
 }
 
 bool DoubleLinkedList::empty()
 {
-    return (!head->next) ? true : false;
+    return (length == -1) ? true : false;
 }
 
 int DoubleLinkedList::find_middle()
 {
-    if(!head->next)
+    if(length == -1)
         return -1;
 
-    Node *slow = head->next;
-    Node *fast = head->next;
+    Node *slow = head;
+    Node *fast = head;
 
     while(fast->next && fast->next->next)
     {
@@ -131,22 +200,23 @@ int DoubleLinkedList::find_middle()
 
 void DoubleLinkedList::reverse()
 {
-    if(!head->next || !head->next->next)
+    if(length == -1)
         return;
 
-    Node *cur = head->next;
-    Node *prev = nullptr;
-    Node *next = nullptr;
+    Node *temp = nullptr;
+    Node *cur = head;
+
+    tail = head;
     while(cur)
     {
-        next = cur->next;
-        cur->next = prev;
-        prev = cur;
-        cur = next;
+        temp = cur->prev;
+        cur->prev = cur->next;
+        cur->next = temp;
+        cur = cur->prev;
     }
 
-    head = new Node(0);
-    head->next = prev;
+    if(temp)
+        head = temp->prev;
 }
 
 void DoubleLinkedList::free_list()
