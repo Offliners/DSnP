@@ -16,7 +16,6 @@ class Node {
 class LinkedList {
     public:
         LinkedList() {};
-        LinkedList(int);
         void append(int);
         void insert(int, int);
         void display();

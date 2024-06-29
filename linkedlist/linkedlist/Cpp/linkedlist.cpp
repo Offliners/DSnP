@@ -1,11 +1,6 @@
 #include <iostream>
 #include "linkedlist.h"
 
-LinkedList::LinkedList(int n)
-{
-    head = new Node(n);
-}
-
 void LinkedList::append(int n)
 {
     Node *next = new Node(n);

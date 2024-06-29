@@ -9,17 +9,17 @@ config = {
     'cmd_lower' : 0,
     'cmd_upper' : 10000,
 
-    # Probability of each linked list command
-    'prob_append'  : 0.17,
-    'prob_insert'  : 0.17,
-    'prob_display' : 0.098,
-    'prob_remove'  : 0.17,
-    'prob_check'   : 0.098,
-    'prob_empty'   : 0.098,
-    'prob_middle'  : 0.098,
-    'prob_reverse' : 0.098,
+    # Probability of each double linked list command
+    'prob_append'  : 0.3,
+    'prob_insert'  : 0.3,
+    'prob_display' : 0.1,
+    'prob_remove'  : 0.1,
+    'prob_check'   : 0.1,
+    'prob_empty'   : 0.1,
+    'prob_middle'  : 0.1,
+    'prob_reverse' : 0.1,
 
-    # Boundary of value in linked list
+    # Boundary of value in double linked list
     'value_lower' : 0,
     'value_upper' : 10000
 }

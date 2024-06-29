@@ -1,12 +1,7 @@
 #include <iostream>
-#include "linkedlist.h"
+#include "doublelinkedlist.h"
 
-LinkedList::LinkedList(int n)
-{
-    head = new Node(n);
-}
-
-void LinkedList::append(int n)
+void DoubleLinkedList::append(int n)
 {
     Node *next = new Node(n);
     
@@ -21,7 +16,7 @@ void LinkedList::append(int n)
     }
 }
 
-void LinkedList::insert(int index, int n)
+void DoubleLinkedList::insert(int index, int n)
 {
     int len = check();
     if(index > len || index < 0)
@@ -55,7 +50,7 @@ void LinkedList::insert(int index, int n)
     }
 }
 
-void LinkedList::display()
+void DoubleLinkedList::display()
 {
     Node *cur = head->next;
     while(cur)
@@ -66,7 +61,7 @@ void LinkedList::display()
     std::cout << std::endl;
 }
 
-void LinkedList::remove(int index)
+void DoubleLinkedList::remove(int index)
 {
     int len = check();
     if(index >= len || index < 0)
@@ -96,7 +91,7 @@ void LinkedList::remove(int index)
     }
 }
 
-int LinkedList::check()
+int DoubleLinkedList::check()
 {
     if(!head->next)
         return 0;
@@ -112,12 +107,12 @@ int LinkedList::check()
     return len;
 }
 
-bool LinkedList::empty()
+bool DoubleLinkedList::empty()
 {
     return (!head->next) ? true : false;
 }
 
-int LinkedList::find_middle()
+int DoubleLinkedList::find_middle()
 {
     if(!head->next)
         return -1;
@@ -134,7 +129,7 @@ int LinkedList::find_middle()
     return slow->val;
 }
 
-void LinkedList::reverse()
+void DoubleLinkedList::reverse()
 {
     if(!head->next || !head->next->next)
         return;
@@ -154,7 +149,7 @@ void LinkedList::reverse()
     head->next = prev;
 }
 
-void LinkedList::free_list()
+void DoubleLinkedList::free_list()
 {
     Node *temp;
     while(head)

@@ -45,38 +45,38 @@ int main(void)
             int n, index;
             case APPEND:
                 cin >> n;
-                ll.append(n);
+                dll.append(n);
                 break;
             case INSERT:
                 cin >> index >> n;
-                ll.insert(index, n);
+                dll.insert(index, n);
                 break;
             case DISPLAY:
-                ll.display();
+                dll.display();
                 break;
             case REMOVE:
                 cin >> n;
-                ll.remove(n);
+                dll.remove(n);
                 break;
             case CHECK:
-                n = ll.check();
+                n = dll.check();
                 cout << n << endl;
                 break;
             case EMPTY:
-                if(ll.empty())
+                if(dll.empty())
                     cout << "True" << endl;
                 else
                     cout << "False" << endl;
                 break;
             case MIDDLE:
-                n = ll.find_middle();
+                n = dll.find_middle();
                 if(n == -1)
                     cout << "Empty" << endl;
                 else
                     cout << n << endl;
                 break;
             case REVERSE:
-                ll.reverse();
+                dll.reverse();
                 break;
             default:
                 cout << "Unknown command" << endl;
@@ -84,7 +84,7 @@ int main(void)
         }
     }
 
-    ll.free_list();
+    dll.free_list();
 
     return 0;
 }

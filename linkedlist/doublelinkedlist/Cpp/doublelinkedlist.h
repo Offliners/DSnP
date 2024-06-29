@@ -17,7 +17,6 @@ class Node {
 class DoubleLinkedList {
     public:
         DoubleLinkedList() {};
-        DoubleLinkedList(int);
         void append(int);
         void insert(int, int);
         void display();
