@@ -13,7 +13,7 @@ class bcolors:
 
 def compare():
     num_testcase = config['num_testcase']
-    exec_files = ['doublelinkedlist_cpp'] # , 'doublelinkedlist_c'
+    exec_files = ['doublelinkedlist_cpp', 'doublelinkedlist_c']
     testcase_input = './input'
     output_folder = './output'
     golden_output_folder = './golden_output'

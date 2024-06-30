@@ -28,7 +28,7 @@ class my_linkedlist:
         self.result = result
 
     def append(self, n: int) -> None:
-        self.ll = [n] + self.ll
+        self.ll.append(n)
     
     def insert(self, index: int, n: int) -> None:
         if index < 0 or index > len(self.ll):

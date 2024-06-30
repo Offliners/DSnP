@@ -10,7 +10,7 @@ void DoubleLinkedList::append(int n)
         tail = new_node;
     }
     else
-        insert_head(n);
+        insert_tail(n);
     
     ++length;
 }
@@ -140,10 +140,10 @@ void DoubleLinkedList::remove(int index)
         return;
     }
 
-    if(length == 0)
+    if(length == 0 || index == length)
     {
-        head = new Node(0);
-        tail = new Node(0);
+        pop();
+        return;
     }
     else if(index == 0)
     {
@@ -151,13 +151,6 @@ void DoubleLinkedList::remove(int index)
         head = remove_node->next;
         head->prev = nullptr;
         remove_node->next = nullptr;
-    }
-    else if(index == length)
-    {
-        Node *remove_node = tail;
-        tail = remove_node->prev;
-        tail->next = nullptr;
-        remove_node->prev = nullptr;
     }
     else
     {
